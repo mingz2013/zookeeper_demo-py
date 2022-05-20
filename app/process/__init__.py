@@ -6,13 +6,12 @@ class ProcessType:
 
 def get_process(typ):
     if typ == ProcessType.Mgr:
-        from .mgr import bp
+        from .mgr import process
     elif typ == ProcessType.Util:
-        from .util import bp
+        from .util import process
     elif typ == ProcessType.Gateway:
-        from .gateway import bp
+        from .gateway import process
     else:
         raise Exception("type err")
-    from frame.process import Process
 
-    return Process(typ, bp)
+    return process

@@ -1,8 +1,10 @@
-from flask import Blueprint
-
-bp = Blueprint("gateway", __name__, url_prefix="/mgr")
 
 
-@bp.route("/")
-def index():
-    return "index page"
+
+
+from frame.process import Process
+
+
+process = Process()
+
+

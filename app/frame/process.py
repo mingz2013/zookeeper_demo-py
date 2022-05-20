@@ -1,9 +1,10 @@
 from frame.router import router
 
 class Process:
-    def __init__(self, typ, bp):
-        self.typ = typ
+    def __init__(self, handlerManager=None, bp=None):
+        self.typ = ""
         self.bp = bp
+        self.handlerManager = handlerManager
 
 
     def start(self):
