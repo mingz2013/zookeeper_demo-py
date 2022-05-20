@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  zookeeper:
+#    build: ./
+    image: zookeeper
+#    volumes:
+#    - ./config:/app/config
+#    - ./cs_common:/app/cs_common
+##    - ../battleLogic:/app/cs_common/afk/Weiqu_EJ_client_BattleLogic
+##    - ../common:/app/cs_common/afk/Weiqu_EJ_client_Common
+#    - ./log:/app/log
+##    - ./service:/app/service
+#    command: "./config/http_config"
+    restart: always
+    ports:
+      - "8080:8080"
+      - "2181:2181"
+    networks:
+      - zookeeper_demo_network
+
+  flask_app:
+#    image: nginx
+    build: ./
+#    ports:
+#      - "8000:8000"
+    restart: always
+    volumes:
+#      - ./nginx:/etc/nginx/conf.d
+      - ./src:/app
+    command: python /app/main.py
+    networks:
+      - zookeeper_demo_network
+
+
+  nginx:
+    image: nginx
+    ports:
+      - "8000:80"
+    restart: always
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    command: nginx -g 'daemon off;'
+    networks:
+      - zookeeper_demo_network
+
+networks:
+  zookeeper_demo_network:
+    name: zookeeper_demo_network
+#    driver: bridge
+    ipam:
+#      driver: default
+      config:
+        - subnet: 192.168.20.0/24
