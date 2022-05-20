@@ -11,3 +11,10 @@ def index():
 def hello_world():
     return "<p>Hello, World!</p>"
 
+@app.route("/call_rpc")
+def call_rpc():
+    pass
+
+@app.route("/send_msg")
+def send_msg():
+    pass

@@ -1,28 +1,22 @@
-import json
-
-import requests
-
 import zk
 
 
-class Server(object):
+class Conf(object):
     def __init__(self):
+        """"""
         self.name = ""
         self.id = 0
         self.conf_server_list_cache = None
         self.conf_game_config = None
 
-        pass
 
-    def start(self, name, id_):
-        self.name, self.id = name, id_
-        self.init()
-        pass
-
-    def init(self):
+    def init(self,  name, id_):
+        self.name = name
+        self.id = id_
         self.register_self()
         self.get_conf()
         pass
+
 
     def register_self(self):
         """注册节点"""
@@ -46,32 +40,6 @@ class Server(object):
         """
         self.conf_game_config = children
 
-    def select_server_host(self, hash_index):
-        """一致性hash算法，选择一个server返回"""
-        return self.conf_server_list_cache[hash_index]
 
-    def call_api(self, url, msg):
-        """
-        目前用http，后续可换成tcp，或消息队列
-        :param host:
-        :param msg:
-        :return:
-        """
-
-        resp = requests.post(url, data=msg)
-        return json.loads(resp.content)
-
-    def call_rpc(self, hash_index, msg):
-        host = self.select_server_host(hash_index)
-        url = f"{host}/call_rpc/"
-        return self.call_api(url, msg)
-
-    
-
-    def send_msg(self, hash_index, msg):
-        host = self.select_server_host(hash_index)
-        url = f"{host}/send_msg"
-        self.call_api(url, msg)
-
-
-server = Server()
+    def select_host(self, hash_index):
+        pass
