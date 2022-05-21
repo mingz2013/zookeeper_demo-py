@@ -19,9 +19,9 @@ class Conf(object):
 
 
     def register_self(self):
-        """注册节点"""
-        zk.zk.ensure_path(f"/server/{self.name}/{self.id}")  # , acl=100)
-        # TODO 启动一个循环，用来在过期前自动注册
+        """注册节点, 临时节点"""
+        zk.zk.create(f"/server/{self.name}/{self.id}", ephemeral=True, makepath=True)
+
 
     # @zk.zk.ChildrenWatch("/server/")
     def watch_server_list(self, children):
