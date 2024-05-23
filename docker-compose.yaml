@@ -1,16 +1,7 @@
 version: '3.7'
 services:
   zookeeper:
-#    build: ./
     image: zookeeper
-#    volumes:
-#    - ./config:/app/config
-#    - ./cs_common:/app/cs_common
-##    - ../battleLogic:/app/cs_common/afk/Weiqu_EJ_client_BattleLogic
-##    - ../common:/app/cs_common/afk/Weiqu_EJ_client_Common
-#    - ./log:/app/log
-##    - ./service:/app/service
-#    command: "./config/http_config"
     restart: always
     ports:
       - "8080:8080"

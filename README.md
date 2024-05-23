@@ -5,7 +5,7 @@ zookeeper_demo
 ```shell
 pip install flask
 pip install kazoo
-pip freeze > r.txt  
+pip freeze > requirements.txt  
 ```
 
 

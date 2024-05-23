@@ -1,7 +1,7 @@
 .PHONY: help
 help:
 	@echo '                                                                          '
-	@echo 'Makefile for gitbook doc                                                  '
+	@echo 'Makefile for zookeeper demo                                                '
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
 	@echo '   make help                           show help                          '
@@ -18,8 +18,8 @@ help:
 
 t := $(shell date +'%Y-%m-%d-%H-%M-%S')
 
-tag_name:="tyhub.touch4.me/weiqu/battle_server:$(t)"
-tag_name_latest:="tyhub.touch4.me/weiqu/battle_server:latest"
+tag_name:="zookeeper-demo:$(t)"
+tag_name_latest:="zookeeper-demo:latest"
 
 
 .PHONY: build-push-image

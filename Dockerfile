@@ -1,5 +1,5 @@
 FROM python
-RUN python -m pip install -r r.txt
+RUN python -m pip install -r requirements.txt
 RUN mkdir /app
 WORKDIR /app
 
